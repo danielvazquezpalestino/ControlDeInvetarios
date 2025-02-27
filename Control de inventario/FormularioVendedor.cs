@@ -1,5 +1,7 @@
 ﻿
 
+using Entidades;
+
 namespace Control_de_inventario
 {
     public partial class FormularioVendedor : Form
