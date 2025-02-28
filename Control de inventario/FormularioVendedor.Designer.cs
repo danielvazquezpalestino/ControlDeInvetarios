@@ -51,7 +51,7 @@
             // lblID
             // 
             lblID.AutoSize = true;
-            lblID.Location = new Point(175, 55);
+            lblID.Location = new Point(175, 51);
             lblID.Name = "lblID";
             lblID.Size = new Size(24, 20);
             lblID.TabIndex = 0;
@@ -107,7 +107,7 @@
             // 
             // txtID
             // 
-            txtID.Location = new Point(234, 52);
+            txtID.Location = new Point(232, 48);
             txtID.Name = "txtID";
             txtID.Size = new Size(175, 27);
             txtID.TabIndex = 6;

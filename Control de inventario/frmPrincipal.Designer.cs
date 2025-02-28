@@ -63,9 +63,9 @@
             // button1
             // 
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(828, 353);
+            button1.Location = new Point(918, 494);
             button1.Name = "button1";
-            button1.Size = new Size(164, 75);
+            button1.Size = new Size(101, 39);
             button1.TabIndex = 4;
             button1.Text = "Cerrar la apliacacion";
             button1.UseVisualStyleBackColor = true;
@@ -74,9 +74,9 @@
             // btnProbedor
             // 
             btnProbedor.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnProbedor.Location = new Point(171, 124);
+            btnProbedor.Location = new Point(221, 105);
             btnProbedor.Name = "btnProbedor";
-            btnProbedor.Size = new Size(197, 79);
+            btnProbedor.Size = new Size(381, 79);
             btnProbedor.TabIndex = 5;
             btnProbedor.Text = "Informacion del Proveedor";
             btnProbedor.UseVisualStyleBackColor = true;
@@ -96,9 +96,9 @@
             // button3
             // 
             button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.Location = new Point(566, 124);
+            button3.Location = new Point(235, 206);
             button3.Name = "button3";
-            button3.Size = new Size(185, 79);
+            button3.Size = new Size(367, 79);
             button3.TabIndex = 7;
             button3.Text = "Metodo de pago";
             button3.UseVisualStyleBackColor = true;
