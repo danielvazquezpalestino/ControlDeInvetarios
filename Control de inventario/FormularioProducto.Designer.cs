@@ -70,7 +70,7 @@
             label2.Name = "label2";
             label2.Size = new Size(90, 20);
             label2.TabIndex = 1;
-            label2.Text = "Descripcion";
+            label2.Text = "Descripción";
             // 
             // label3
             // 
@@ -150,60 +150,73 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.BackColor = SystemColors.ActiveCaption;
+            label7.BackColor = SystemColors.GradientActiveCaption;
             label7.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.Location = new Point(257, 9);
             label7.Name = "label7";
             label7.Size = new Size(290, 31);
             label7.TabIndex = 12;
-            label7.Text = "Informacion del producto";
+            label7.Text = "Información del producto";
+            label7.Click += label7_Click;
             // 
             // button1
             // 
-            button1.Location = new Point(137, 353);
+            button1.BackColor = Color.LightGray;
+            button1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            button1.Location = new Point(158, 352);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(105, 41);
             button1.TabIndex = 13;
             button1.Text = "Agregar";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(278, 353);
+            button2.BackColor = Color.IndianRed;
+            button2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            button2.ForeColor = SystemColors.ControlLight;
+            button2.Location = new Point(290, 352);
             button2.Name = "button2";
-            button2.Size = new Size(94, 29);
+            button2.Size = new Size(105, 42);
             button2.TabIndex = 14;
             button2.Text = "Eliminar";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
-            button3.Location = new Point(446, 364);
+            button3.BackColor = Color.LightGray;
+            button3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            button3.Location = new Point(418, 352);
             button3.Name = "button3";
-            button3.Size = new Size(94, 29);
+            button3.Size = new Size(111, 42);
             button3.TabIndex = 15;
             button3.Text = "Actualizar";
-            button3.UseVisualStyleBackColor = true;
+            button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
             // button4
             // 
-            button4.Location = new Point(576, 365);
+            button4.BackColor = Color.LightCyan;
+            button4.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            button4.Location = new Point(557, 352);
             button4.Name = "button4";
-            button4.Size = new Size(94, 29);
+            button4.Size = new Size(99, 41);
             button4.TabIndex = 16;
             button4.Text = "Buscar";
-            button4.UseVisualStyleBackColor = true;
+            button4.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
-            button5.Location = new Point(24, 353);
+            button5.BackColor = Color.DarkCyan;
+            button5.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            button5.ForeColor = SystemColors.ControlLightLight;
+            button5.Location = new Point(24, 384);
             button5.Name = "button5";
-            button5.Size = new Size(94, 29);
+            button5.Size = new Size(85, 41);
             button5.TabIndex = 17;
             button5.Text = "Salir";
-            button5.UseVisualStyleBackColor = true;
+            button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
             // picImagen
@@ -227,12 +240,14 @@
             // 
             // btnMostrar
             // 
-            btnMostrar.Location = new Point(699, 364);
+            btnMostrar.BackColor = Color.FromArgb(224, 224, 224);
+            btnMostrar.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            btnMostrar.Location = new Point(669, 352);
             btnMostrar.Name = "btnMostrar";
-            btnMostrar.Size = new Size(94, 29);
+            btnMostrar.Size = new Size(103, 42);
             btnMostrar.TabIndex = 20;
             btnMostrar.Text = "Mostrar";
-            btnMostrar.UseVisualStyleBackColor = true;
+            btnMostrar.UseVisualStyleBackColor = false;
             btnMostrar.Click += btnMostrar_Click;
             // 
             // FormularioProducto

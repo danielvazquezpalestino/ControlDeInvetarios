@@ -29,5 +29,10 @@ namespace Control_de_inventario
             Close();
 
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
