@@ -20,7 +20,6 @@ namespace Control_de_inventario
         private void btnVendedor_Click(object sender, EventArgs e)
         {
             FormularioVendedor formulario = new FormularioVendedor();
-            this.Hide();
             formulario.ShowDialog();
 
 
@@ -44,6 +43,11 @@ namespace Control_de_inventario
             FormularioProducto formulario = new FormularioProducto();
             formulario.ShowDialog();
 
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
 
         }
     }
