@@ -20,7 +20,6 @@ namespace Control_de_inventario
         private void btnVendedor_Click(object sender, EventArgs e)
         {
             FormularioVendedor formulario = new FormularioVendedor();
-            this.Hide();
             formulario.ShowDialog();
 
 
