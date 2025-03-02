@@ -103,7 +103,7 @@
             // 
             btnBuscar.BackColor = Color.DarkGray;
             btnBuscar.Font = new Font("Showcard Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnBuscar.Location = new Point(424, 179);
+            btnBuscar.Location = new Point(468, 173);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(284, 45);
             btnBuscar.TabIndex = 9;
@@ -165,7 +165,6 @@
             // 
             // pictureBox1
             // 
-            //pictureBox1.Image = Properties.Resources.;
             pictureBox1.Location = new Point(823, 327);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(310, 297);
