@@ -46,5 +46,10 @@ namespace Control_de_inventario
 
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

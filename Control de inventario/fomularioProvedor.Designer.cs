@@ -74,9 +74,10 @@
             label4.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.Location = new Point(264, 31);
             label4.Name = "label4";
-            label4.Size = new Size(270, 28);
+            label4.Size = new Size(281, 28);
             label4.TabIndex = 3;
-            label4.Text = "Informacion del provedor";
+            label4.Text = "Información del proveedor";
+            label4.Click += label4_Click;
             // 
             // txtNombre
             // 
@@ -102,24 +103,27 @@
             // 
             // button1
             // 
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(440, 289);
+            button1.BackColor = Color.IndianRed;
+            button1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            button1.ForeColor = SystemColors.ButtonFace;
+            button1.Location = new Point(634, 362);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(81, 50);
             button1.TabIndex = 7;
             button1.Text = "Salir";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(264, 289);
+            button2.BackColor = Color.LightGray;
+            button2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            button2.Location = new Point(321, 253);
             button2.Name = "button2";
-            button2.Size = new Size(94, 29);
+            button2.Size = new Size(104, 45);
             button2.TabIndex = 8;
             button2.Text = "Actualizar";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             // 
             // fomularioProvedor
             // 

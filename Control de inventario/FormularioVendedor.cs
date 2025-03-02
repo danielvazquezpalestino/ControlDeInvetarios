@@ -37,5 +37,20 @@ namespace Control_de_inventario
             vendedor.Nombre = txtNombre.Text;
             vendedor.NumeroTelefono = txtNumeroTelefono.Text;
         }
+
+        private void btnMostar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
