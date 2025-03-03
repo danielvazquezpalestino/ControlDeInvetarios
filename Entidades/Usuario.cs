@@ -12,9 +12,6 @@ namespace Control_de_inventario
         public string Nombre { get; set; }
         public string CorreoElectronico { get; set; }
 
-        public void RegistrarUsuario()
-        {
-            // Lógica para registrar un nuevo usuario
-        }
+
     }
 }
