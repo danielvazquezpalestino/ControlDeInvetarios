@@ -124,7 +124,7 @@
             Controls.Add(label1);
             Name = "frmPrincipal";
             Text = "Formulario principal";
-            
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
