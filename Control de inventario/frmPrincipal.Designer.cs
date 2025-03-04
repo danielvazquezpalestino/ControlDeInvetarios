@@ -101,12 +101,12 @@
             // button3
             // 
             button3.BackColor = SystemColors.GradientInactiveCaption;
-            button3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button3.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.Location = new Point(546, 335);
             button3.Name = "button3";
             button3.Size = new Size(317, 79);
             button3.TabIndex = 7;
-            button3.Text = "Método de Pago";
+            button3.Text = "ventas";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 

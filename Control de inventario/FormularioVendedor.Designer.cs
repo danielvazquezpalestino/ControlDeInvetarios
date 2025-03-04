@@ -47,17 +47,8 @@
             btnSalir = new Button();
             txtDomicilio = new Label();
             textBox1 = new TextBox();
-            btnLimpiar = new Button();
             dataGridViewVendedores = new DataGridView();
-            vendedorBindingSource = new BindingSource(components);
-            iDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            numeroTelefonoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            correoElectronicoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            domicilioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nSSDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridViewVendedores).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)vendedorBindingSource).BeginInit();
             SuspendLayout();
             // 
             // lblID
@@ -245,79 +236,21 @@
             textBox1.Size = new Size(153, 23);
             textBox1.TabIndex = 17;
             // 
-            // btnLimpiar
-            // 
-            btnLimpiar.BackColor = Color.IndianRed;
-            btnLimpiar.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            btnLimpiar.ForeColor = SystemColors.ButtonFace;
-            btnLimpiar.Location = new Point(556, 247);
-            btnLimpiar.Margin = new Padding(3, 2, 3, 2);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(98, 33);
-            btnLimpiar.TabIndex = 19;
-            btnLimpiar.Text = "Limpiar";
-            btnLimpiar.UseVisualStyleBackColor = false;
-            btnLimpiar.Click += btnLimpiar_Click;
-            // 
             // dataGridViewVendedores
             // 
-            dataGridViewVendedores.AutoGenerateColumns = false;
+            dataGridViewVendedores.AllowUserToOrderColumns = true;
             dataGridViewVendedores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewVendedores.Columns.AddRange(new DataGridViewColumn[] { iDDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, numeroTelefonoDataGridViewTextBoxColumn, correoElectronicoDataGridViewTextBoxColumn, domicilioDataGridViewTextBoxColumn, nSSDataGridViewTextBoxColumn });
-            dataGridViewVendedores.DataSource = vendedorBindingSource;
-            dataGridViewVendedores.Location = new Point(393, 44);
+            dataGridViewVendedores.Location = new Point(408, 34);
             dataGridViewVendedores.Name = "dataGridViewVendedores";
-            dataGridViewVendedores.Size = new Size(655, 150);
-            dataGridViewVendedores.TabIndex = 20;
-            dataGridViewVendedores.SelectionChanged += dataGridViewVendedores_SelectionChanged_2;
-            // 
-            // vendedorBindingSource
-            // 
-            vendedorBindingSource.DataSource = typeof(Entidades.Vendedor);
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            nombreDataGridViewTextBoxColumn.DataPropertyName = "Nombre";
-            nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            // 
-            // numeroTelefonoDataGridViewTextBoxColumn
-            // 
-            numeroTelefonoDataGridViewTextBoxColumn.DataPropertyName = "NumeroTelefono";
-            numeroTelefonoDataGridViewTextBoxColumn.HeaderText = "NumeroTelefono";
-            numeroTelefonoDataGridViewTextBoxColumn.Name = "numeroTelefonoDataGridViewTextBoxColumn";
-            // 
-            // correoElectronicoDataGridViewTextBoxColumn
-            // 
-            correoElectronicoDataGridViewTextBoxColumn.DataPropertyName = "CorreoElectronico";
-            correoElectronicoDataGridViewTextBoxColumn.HeaderText = "CorreoElectronico";
-            correoElectronicoDataGridViewTextBoxColumn.Name = "correoElectronicoDataGridViewTextBoxColumn";
-            // 
-            // domicilioDataGridViewTextBoxColumn
-            // 
-            domicilioDataGridViewTextBoxColumn.DataPropertyName = "Domicilio";
-            domicilioDataGridViewTextBoxColumn.HeaderText = "Domicilio";
-            domicilioDataGridViewTextBoxColumn.Name = "domicilioDataGridViewTextBoxColumn";
-            // 
-            // nSSDataGridViewTextBoxColumn
-            // 
-            nSSDataGridViewTextBoxColumn.DataPropertyName = "NSS";
-            nSSDataGridViewTextBoxColumn.HeaderText = "NSS";
-            nSSDataGridViewTextBoxColumn.Name = "nSSDataGridViewTextBoxColumn";
+            dataGridViewVendedores.Size = new Size(733, 196);
+            dataGridViewVendedores.TabIndex = 18;
             // 
             // FormularioVendedor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1176, 344);
+            ClientSize = new Size(1147, 344);
             Controls.Add(dataGridViewVendedores);
-            Controls.Add(btnLimpiar);
             Controls.Add(textBox1);
             Controls.Add(txtDomicilio);
             Controls.Add(btnSalir);
@@ -341,7 +274,6 @@
             Text = "Formulario del Vendedor";
             Load += FormularioVendedor_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewVendedores).EndInit();
-            ((System.ComponentModel.ISupportInitialize)vendedorBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -366,14 +298,6 @@
         private Button btnSalir;
         private Label txtDomicilio;
         private TextBox textBox1;
-        private Button btnLimpiar;
         private DataGridView dataGridViewVendedores;
-        private DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn numeroTelefonoDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn correoElectronicoDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn domicilioDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nSSDataGridViewTextBoxColumn;
-        private BindingSource vendedorBindingSource;
     }
 }
