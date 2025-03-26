@@ -1,5 +1,3 @@
-using System.Diagnostics;
-
 namespace Control_de_inventario
 {
     public partial class frmPrincipal : Form
@@ -25,6 +23,7 @@ namespace Control_de_inventario
             this.Hide();
             formulario.ShowDialog();
             this.Show();
+
 
         }
 

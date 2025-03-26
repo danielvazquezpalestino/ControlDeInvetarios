@@ -1,4 +1,5 @@
-﻿using Entidades;
+﻿using BasesDeDatos;
+using Entidades;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
@@ -11,7 +12,7 @@ namespace Control_de_inventario
             InitializeComponent();
         }
 
-        SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=prueba;integrated security=true;encrypt=false");
+        SqlConnection connection = new SqlConnection(Coneccion.CadenaConexion);
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -46,7 +47,7 @@ namespace Control_de_inventario
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=prueba;integrated security=true;encrypt=false"))
+                using (SqlConnection connection = new SqlConnection(Coneccion.CadenaConexion))
                 {
                     connection.Open();
 
@@ -83,7 +84,7 @@ namespace Control_de_inventario
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=prueba;integrated security=true;encrypt=false"))
+                using (SqlConnection connection = new SqlConnection(Coneccion.CadenaConexion))
                 {
                     connection.Open();
 
@@ -136,7 +137,7 @@ namespace Control_de_inventario
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=prueba;integrated security=true;encrypt=false"))
+                using (SqlConnection connection = new SqlConnection(Coneccion.CadenaConexion))
                 {
                     connection.Open();
 
@@ -286,7 +287,7 @@ namespace Control_de_inventario
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=prueba;integrated security=true;encrypt=false"))
+                using (SqlConnection connection = new SqlConnection(Coneccion.CadenaConexion))
                 {
                     connection.Open();
 

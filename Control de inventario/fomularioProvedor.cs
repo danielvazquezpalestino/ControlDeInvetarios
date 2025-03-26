@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using BasesDeDatos;
 using Entidades;
 using Microsoft.Data.SqlClient;
 
@@ -15,7 +16,7 @@ namespace Control_de_inventario
         {
             InitializeComponent();
         }
-        SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=prueba;integrated security=true;encrypt=false");
+        SqlConnection connection = new SqlConnection(Coneccion.CadenaConexion);
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -52,7 +53,7 @@ namespace Control_de_inventario
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=prueba;integrated security=true;encrypt=false"))
+                using (SqlConnection connection = new SqlConnection(Coneccion.CadenaConexion   ))
                 {
                     connection.Open();
 
@@ -128,20 +129,25 @@ namespace Control_de_inventario
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Proveedor proveedor = new Proveedor
+            if (txtNombre.Text != "" && txtDomicilio.Text != "" && txtCorreo.Text != "")
             {
-                Nombre = txtNombre.Text,
-                Domicilio = txtDomicilio.Text,
-                CorreoElectronico = txtCorreo.Text
-            };
+                Proveedor proveedor = new Proveedor
+                {
+                    Nombre = txtNombre.Text,
+                    Domicilio = txtDomicilio.Text,
+                    CorreoElectronico = txtCorreo.Text
+                };
 
-            GuardarProveedor(proveedor);
+                GuardarProveedor(proveedor);
+            }
+            else
+                MessageBox.Show("Rellena los campos solicitados");
         }
         private void GuardarProveedor(Proveedor proveedor)
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=prueba;integrated security=true;encrypt=false"))
+                using (SqlConnection connection = new SqlConnection(Coneccion.CadenaConexion))
                 {
                     connection.Open();
 
@@ -176,7 +182,7 @@ namespace Control_de_inventario
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=prueba;integrated security=true;encrypt=false"))
+                using (SqlConnection connection = new SqlConnection(Coneccion.CadenaConexion))
                 {
                     connection.Open();
 
@@ -220,7 +226,7 @@ namespace Control_de_inventario
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=prueba;integrated security=true;encrypt=false"))
+                using (SqlConnection connection = new SqlConnection(Coneccion.CadenaConexion))
                 {
                     connection.Open();
 

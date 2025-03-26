@@ -20,17 +20,19 @@ namespace Control_de_inventario
         private void button1_Click(object sender, EventArgs e)
         {
             Producto producto = new Producto();
-
-            producto.Precio = Convert.ToInt32(txtPrecio.Text);
-            producto.Nombre = txtNombre.Text;
-            producto.Descripcion = txtDescripcion.Text;
-            producto.Imagen = "";
-            producto.CategoriaID = Convert.ToInt32(txtCategoria.Text);
-            producto.ProveedorID = Convert.ToInt32(txtProvedor.Text);
-
-
-            ProductoDataSource productoDataSource = new ProductoDataSource();
-            productoDataSource.GuardarProducto(producto);
+            if(txtCategoria.Text !="" && txtDescripcion.Text != "" && txtNombre.Text != "" && txtPrecio.Text != "" && txtProvedor.Text!="")
+            {
+                producto.Precio = Convert.ToInt32(txtPrecio.Text);
+                producto.Nombre = txtNombre.Text;
+                producto.Descripcion = txtDescripcion.Text;
+                producto.Imagen = "";
+                producto.CategoriaID = Convert.ToInt32(txtCategoria.Text);
+                producto.ProveedorID = Convert.ToInt32(txtProvedor.Text);
+                ProductoDataSource productoDataSource = new ProductoDataSource();
+                productoDataSource.GuardarProducto(producto);
+            }
+            else
+                MessageBox.Show("Favor de llenar todos los campos");
 
         }
 
