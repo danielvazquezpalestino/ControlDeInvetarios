@@ -1,7 +1,4 @@
-﻿using System.Text;
-using System.Windows.Forms;
-using System.Data.SqlClient;
-using Entidades;
+﻿using Entidades;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
@@ -14,7 +11,7 @@ namespace Control_de_inventario
             InitializeComponent();
         }
 
-        SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=controlInventario;integrated security=true;encrypt=false");
+        SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=prueba;integrated security=true;encrypt=false");
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -25,7 +22,7 @@ namespace Control_de_inventario
         {
             Close();
         }
-        
+
         private void txtID_TextChanged(object sender, EventArgs e)
         {
 
@@ -37,7 +34,7 @@ namespace Control_de_inventario
             {
                 NSS = txtSeguroSocial.Text,
                 CorreoElectronico = txtCorreo.Text,
-                Domicilio = txtDomicilio.Text,
+                Domicilio = textBox1.Text,
                 Nombre = txtNombre.Text,
                 NumeroTelefono = txtNumeroTelefono.Text
             };
@@ -69,53 +66,13 @@ namespace Control_de_inventario
                 }
 
                 MessageBox.Show("Vendedor guardado correctamente.");
-
-            vendedor.ID = Convert.ToInt32(txtID.Text);
-            vendedor.NSS = txtSeguroSocial.Text;
-            vendedor.CorreoElectronico = txtCorreo.Text;
-            vendedor.Domicilio = txtDomicilio.Text;
-            vendedor.Nombre = txtNombre.Text;
-            vendedor.NumeroTelefono = txtNumeroTelefono.Text;
-
-            // Llamar al método para guardar el vendedor en la base de datos
-            GuardarVendedor(vendedor);
-        }
-
-        private void GuardarVendedor(Vendedor vendedor)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=controlInventario;integrated security=true;encrypt=false"))
-                {
-                    connection.Open();
-
-                    // Consulta SQL para insertar un nuevo vendedor
-                    string query = @"INSERT INTO Vendedores (ID, NSS, CorreoElectronico, Domicilio, Nombre, NumeroTelefono) 
-                                     VALUES (@ID, @NSS, @CorreoElectronico, @Domicilio, @Nombre, @NumeroTelefono)";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        // Añadir parámetros para evitar SQL Injection
-                        command.Parameters.AddWithValue("@ID", vendedor.ID);
-                        command.Parameters.AddWithValue("@NSS", vendedor.NSS);
-                        command.Parameters.AddWithValue("@CorreoElectronico", vendedor.CorreoElectronico);
-                        command.Parameters.AddWithValue("@Domicilio", vendedor.Domicilio);
-                        command.Parameters.AddWithValue("@Nombre", vendedor.Nombre);
-                        command.Parameters.AddWithValue("@NumeroTelefono", vendedor.NumeroTelefono);
-
-                        // Ejecutar la consulta
-                        command.ExecuteNonQuery();
-                    }
-                }
-
-                MessageBox.Show("Vendedor guardado correctamente.");
+                MostrarVendedores(); // Actualizar el DataGridView
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al guardar el vendedor: " + ex.Message);
             }
         }
-
 
         private void btnMostar_Click(object sender, EventArgs e)
         {
@@ -126,12 +83,11 @@ namespace Control_de_inventario
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=controlInventario;integrated security=true;encrypt=false"))
+                using (SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=prueba;integrated security=true;encrypt=false"))
                 {
                     connection.Open();
 
-                    // Consulta SQL para seleccionar todos los vendedores
-                    string query = "SELECT * FROM Vendedores";
+                    string query = "SELECT * FROM Vendedor";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -139,7 +95,6 @@ namespace Control_de_inventario
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
 
-                        // Asignar el DataTable al DataGridView
                         dataGridViewVendedores.DataSource = dataTable;
                     }
                 }
@@ -165,184 +120,15 @@ namespace Control_de_inventario
 
         }
 
-        private void btnActualizar_Click(object sender, EventArgs e)
-        {
-            Vendedor vendedor = new Vendedor
-            {
-                ID = Convert.ToInt32(txtID.Text),
-                NSS = txtSeguroSocial.Text,
-                CorreoElectronico = txtCorreo.Text,
-                Domicilio = txtDomicilio.Text,
-                Nombre = txtNombre.Text,
-                NumeroTelefono = txtNumeroTelefono.Text
-            };
-
-            ActualizarVendedor(vendedor);
-        }
-
-        private void ActualizarVendedor(Vendedor vendedor)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=controlInventario;integrated security=true;encrypt=false"))
-                {
-                    connection.Open();
-
-                    // Consulta SQL para actualizar un vendedor
-                    string query = @"UPDATE Vendedores 
-                              SET NSS = @NSS, 
-                                  CorreoElectronico = @CorreoElectronico, 
-                                  Domicilio = @Domicilio, 
-                                  Nombre = @Nombre, 
-                                  NumeroTelefono = @NumeroTelefono 
-                              WHERE ID = @ID";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        // Añadir parámetros
-                        command.Parameters.AddWithValue("@ID", vendedor.ID);
-                        command.Parameters.AddWithValue("@NSS", vendedor.NSS);
-                        command.Parameters.AddWithValue("@CorreoElectronico", vendedor.CorreoElectronico);
-                        command.Parameters.AddWithValue("@Domicilio", vendedor.Domicilio);
-                        command.Parameters.AddWithValue("@Nombre", vendedor.Nombre);
-                        command.Parameters.AddWithValue("@NumeroTelefono", vendedor.NumeroTelefono);
-
-                        // Ejecutar la consulta
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Vendedor actualizado correctamente.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se encontró el vendedor con el ID especificado.");
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al actualizar el vendedor: " + ex.Message);
-            }
-        }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(txtID.Text);
-            EliminarVendedor(id);
-        }
-
-        private void EliminarVendedor(int id)
-        {
-            try
+            if (string.IsNullOrEmpty(txtID.Text))
             {
-                using (SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=controlInventario;integrated security=true;encrypt=false"))
-                {
-                    connection.Open();
-
-                    // Consulta SQL para eliminar un vendedor
-                    string query = "DELETE FROM Vendedores WHERE ID = @ID";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        // Añadir parámetros
-                        command.Parameters.AddWithValue("@ID", id);
-
-                        // Ejecutar la consulta
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Vendedor eliminado correctamente.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se encontró el vendedor con el ID especificado.");
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al eliminar el vendedor: " + ex.Message);
-            }
-        }
-
-        private void FormularioVendedor_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnActualizar_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtID.Text) || string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtDomicilio.Text) || string.IsNullOrEmpty(txtCorreo.Text) || string.IsNullOrEmpty(txtSeguroSocial.Text) || string.IsNullOrEmpty(txtNumeroTelefono.Text))
-            {
-                MessageBox.Show("Por favor, complete todos los campos.");
+                MessageBox.Show("Por favor, ingrese el ID del vendedor a eliminar.");
                 return;
             }
 
-            Vendedor vendedor = new Vendedor
-            {
-                ID = Convert.ToInt32(txtID.Text),
-                NSS = txtSeguroSocial.Text,
-                CorreoElectronico = txtCorreo.Text,
-                Domicilio = txtDomicilio.Text,
-                Nombre = txtNombre.Text,
-                NumeroTelefono = txtNumeroTelefono.Text
-            };
-
-            ActualizarVendedor(vendedor);
-        }
-
-
-        private void ActualizarVendedor(Vendedor vendedor)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=prueba;integrated security=true;encrypt=false"))
-                {
-                    connection.Open();
-
-                    string query = @"UPDATE Vendedor 
-                                      SET NSS = @NSS, 
-                                          Correo_Electronico = @Correo_Electronico, 
-                                          Domicilio = @Domicilio, 
-                                          Nombre = @Nombre, 
-                                          Num_Telefono = @Num_Telefono 
-                                      WHERE ID = @ID";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@ID", vendedor.ID);
-                        command.Parameters.AddWithValue("@NSS", vendedor.NSS);
-                        command.Parameters.AddWithValue("@Correo_Electronico", vendedor.CorreoElectronico);
-                        command.Parameters.AddWithValue("@Domicilio", vendedor.Domicilio);
-                        command.Parameters.AddWithValue("@Nombre", vendedor.Nombre);
-                        command.Parameters.AddWithValue("@Num_Telefono", vendedor.NumeroTelefono);
-
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Vendedor actualizado correctamente.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se encontró el vendedor con el ID especificado.");
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al actualizar el vendedor: " + ex.Message);
-            }
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            int id = Convert.ToInt32(txtID.Text);
+            var id = Convert.ToInt32(txtID.Text);
             EliminarVendedor(id);
         }
 
@@ -365,6 +151,12 @@ namespace Control_de_inventario
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Vendedor eliminado correctamente.");
+
+                            // Reorganizar los IDs
+                            ReorganizarIDs(connection);
+
+                            // Actualizar el DataGridView
+                            MostrarVendedores();
                         }
                         else
                         {
@@ -376,6 +168,57 @@ namespace Control_de_inventario
             catch (Exception ex)
             {
                 MessageBox.Show("Error al eliminar el vendedor: " + ex.Message);
+            }
+        }
+
+        private void ReorganizarIDs(SqlConnection connection)
+        {
+            try
+            {
+                // Desactivar la restricción de identidad
+                using (SqlCommand disableIdentityCommand = new SqlCommand("SET IDENTITY_INSERT Vendedor ON", connection))
+                {
+                    disableIdentityCommand.ExecuteNonQuery();
+                }
+
+                // Obtener todos los vendedores ordenados por ID
+                string selectQuery = "SELECT ID FROM Vendedor ORDER BY ID";
+                DataTable dataTable = new DataTable();
+                using (SqlCommand selectCommand = new SqlCommand(selectQuery, connection))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(selectCommand);
+                    adapter.Fill(dataTable);
+                }
+
+                // Actualizar los IDs secuencialmente
+                int newID = 1;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    int oldID = Convert.ToInt32(row["ID"]);
+                    if (oldID != newID)
+                    {
+                        string updateQuery = "UPDATE Vendedor SET ID = @NewID WHERE ID = @OldID";
+                        using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
+                        {
+                            updateCommand.Parameters.AddWithValue("@NewID", newID);
+                            updateCommand.Parameters.AddWithValue("@OldID", oldID);
+                            updateCommand.ExecuteNonQuery();
+                        }
+                    }
+                    newID++;
+                }
+
+                // Reactivar la restricción de identidad
+                using (SqlCommand enableIdentityCommand = new SqlCommand("SET IDENTITY_INSERT Vendedor OFF", connection))
+                {
+                    enableIdentityCommand.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("IDs reorganizados correctamente.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al reorganizar los IDs: " + ex.Message);
             }
         }
 
@@ -396,17 +239,14 @@ namespace Control_de_inventario
 
         private void dataGridViewVendedores_SelectionChanged(object sender, EventArgs e)
         {
-            // Verificar si hay alguna fila seleccionada
             if (dataGridViewVendedores.SelectedRows.Count > 0)
             {
-                // Obtener la fila seleccionada
                 DataGridViewRow selectedRow = dataGridViewVendedores.SelectedRows[0];
 
-                // Rellenar los TextBox con los datos de la fila seleccionada
                 txtID.Text = selectedRow.Cells["ID"].Value.ToString();
                 txtSeguroSocial.Text = selectedRow.Cells["NSS"].Value.ToString();
                 txtCorreo.Text = selectedRow.Cells["CorreoElectronico"].Value.ToString();
-                txtDomicilio.Text = selectedRow.Cells["Domicilio"].Value.ToString();
+                textBox1.Text = selectedRow.Cells["Domicilio"].Value.ToString();
                 txtNombre.Text = selectedRow.Cells["Nombre"].Value.ToString();
                 txtNumeroTelefono.Text = selectedRow.Cells["NumeroTelefono"].Value.ToString();
             }
@@ -422,9 +262,71 @@ namespace Control_de_inventario
 
         }
 
-        private void dataGridViewVendedores_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
+        private void btnActualizar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtID.Text) || string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtDomicilio.Text) || string.IsNullOrEmpty(txtCorreo.Text) || string.IsNullOrEmpty(txtSeguroSocial.Text) || string.IsNullOrEmpty(txtNumeroTelefono.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos.");
+                return;
+            }
 
+            Vendedor vendedor = new Vendedor
+            {
+                ID = Convert.ToInt32(txtID.Text),
+                NSS = txtSeguroSocial.Text,
+                CorreoElectronico = txtCorreo.Text,
+                Domicilio = textBox1.Text,
+                Nombre = txtNombre.Text,
+                NumeroTelefono = txtNumeroTelefono.Text
+            };
+
+            ActualizarVendedor(vendedor);
+        }
+        private void ActualizarVendedor(Vendedor vendedor)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection("server=DESKTOP-3DIM3QO;database=prueba;integrated security=true;encrypt=false"))
+                {
+                    connection.Open();
+
+                    string query = @"UPDATE Vendedor
+                                      SET NSS = @NSS, 
+                                          Correo_Electronico = @Correo_Electronico, 
+                                          Domicilio = @Domicilio, 
+                                          Nombre = @Nombre, 
+                                          Num_Telefono = @Num_Telefono 
+                                      WHERE ID = @ID";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ID", vendedor.ID);
+                        command.Parameters.AddWithValue("@NSS", vendedor.NSS);
+                        command.Parameters.AddWithValue("@Correo_Electronico", vendedor.CorreoElectronico);
+                        command.Parameters.AddWithValue("@Domicilio", vendedor.Domicilio);
+                        command.Parameters.AddWithValue("@Nombre", vendedor.Nombre);
+                        command.Parameters.AddWithValue("@Num_Telefono", vendedor.NumeroTelefono);
+
+                        command.ExecuteNonQuery();
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Vendedor actualizado correctamente.");
+                            MostrarVendedores(); // Actualizar el DataGridView
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se encontró el vendedor con el ID especificado.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al actualizar el vendedor: " + ex.Message);
+            }
         }
 
         private void dataGridViewVendedores_SelectionChanged_1(object sender, EventArgs e)
@@ -436,25 +338,21 @@ namespace Control_de_inventario
                 txtID.Text = selectedRow.Cells["ID"].Value.ToString();
                 txtSeguroSocial.Text = selectedRow.Cells["NSS"].Value.ToString();
                 txtCorreo.Text = selectedRow.Cells["Correo_Electronico"].Value.ToString();
-                txtDomicilio.Text = selectedRow.Cells["Domicilio"].Value.ToString();
+                textBox1.Text = selectedRow.Cells["Domicilio"].Value.ToString();
                 txtNombre.Text = selectedRow.Cells["Nombre"].Value.ToString();
                 txtNumeroTelefono.Text = selectedRow.Cells["Num_Telefono"].Value.ToString();
             }
         }
 
-        private void dataGridViewVendedores_SelectionChanged_2(object sender, EventArgs e)
+        private void btnLimpiar_Click_1(object sender, EventArgs e)
         {
-            if (dataGridViewVendedores.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = dataGridViewVendedores.SelectedRows[0];
+            txtID.Clear();
+            txtNombre.Clear();
+            txtCorreo.Clear();
+            textBox1.Clear();
+            txtSeguroSocial.Clear();
+            txtNumeroTelefono.Clear();
 
-                txtID.Text = selectedRow.Cells["ID"].Value.ToString();
-                txtSeguroSocial.Text = selectedRow.Cells["NSS"].Value.ToString();
-                txtCorreo.Text = selectedRow.Cells["Correo_Electronico"].Value.ToString();
-                txtDomicilio.Text = selectedRow.Cells["Domicilio"].Value.ToString();
-                txtNombre.Text = selectedRow.Cells["Nombre"].Value.ToString();
-                txtNumeroTelefono.Text = selectedRow.Cells["Num_Telefono"].Value.ToString();
-            }
         }
     }
 }

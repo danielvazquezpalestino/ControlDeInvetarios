@@ -43,6 +43,7 @@
             btnMostrar = new Button();
             txtID = new TextBox();
             dataGridViewProveedores = new DataGridView();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProveedores).BeginInit();
             SuspendLayout();
             // 
@@ -210,11 +211,21 @@
             dataGridViewProveedores.TabIndex = 15;
             dataGridViewProveedores.SelectionChanged += dataGridView1_SelectionChanged;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(184, 65);
+            label5.Name = "label5";
+            label5.Size = new Size(18, 15);
+            label5.TabIndex = 16;
+            label5.Text = "ID";
+            // 
             // fomularioProvedor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(960, 338);
+            Controls.Add(label5);
             Controls.Add(dataGridViewProveedores);
             Controls.Add(txtID);
             Controls.Add(btnMostrar);
@@ -257,5 +268,6 @@
         private Button btnMostrar;
         private TextBox txtID;
         private DataGridView dataGridViewProveedores;
+        private Label label5;
     }
 }

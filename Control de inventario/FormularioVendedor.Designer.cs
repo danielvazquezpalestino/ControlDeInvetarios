@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             lblID = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -48,6 +47,7 @@
             txtDomicilio = new Label();
             textBox1 = new TextBox();
             dataGridViewVendedores = new DataGridView();
+            btnLimpiar = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewVendedores).BeginInit();
             SuspendLayout();
             // 
@@ -244,12 +244,29 @@
             dataGridViewVendedores.Name = "dataGridViewVendedores";
             dataGridViewVendedores.Size = new Size(733, 196);
             dataGridViewVendedores.TabIndex = 18;
+            dataGridViewVendedores.CellContentClick += dataGridViewVendedores_CellContentClick_1;
+            dataGridViewVendedores.SelectionChanged += dataGridViewVendedores_SelectionChanged_1;
+            // 
+            // btnLimpiar
+            // 
+            btnLimpiar.BackColor = Color.IndianRed;
+            btnLimpiar.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            btnLimpiar.ForeColor = SystemColors.ButtonFace;
+            btnLimpiar.Location = new Point(558, 247);
+            btnLimpiar.Margin = new Padding(3, 2, 3, 2);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(98, 33);
+            btnLimpiar.TabIndex = 19;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = false;
+            btnLimpiar.Click += btnLimpiar_Click_1;
             // 
             // FormularioVendedor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1147, 344);
+            Controls.Add(btnLimpiar);
             Controls.Add(dataGridViewVendedores);
             Controls.Add(textBox1);
             Controls.Add(txtDomicilio);
@@ -299,5 +316,6 @@
         private Label txtDomicilio;
         private TextBox textBox1;
         private DataGridView dataGridViewVendedores;
+        private Button btnLimpiar;
     }
 }

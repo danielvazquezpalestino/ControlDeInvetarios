@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace Control_de_inventario
 {
     public partial class frmPrincipal : Form
@@ -20,8 +22,9 @@ namespace Control_de_inventario
         private void btnVendedor_Click(object sender, EventArgs e)
         {
             FormularioVendedor formulario = new FormularioVendedor();
+            this.Hide();
             formulario.ShowDialog();
-
+            this.Show();
 
         }
 
@@ -33,23 +36,26 @@ namespace Control_de_inventario
         private void btnProbedor_Click(object sender, EventArgs e)
         {
             fomularioProvedor formulario = new fomularioProvedor();
-
+            this.Hide();
             formulario.ShowDialog();
-
+            this.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             FormularioProducto formulario = new FormularioProducto();
+            this.Hide();
             formulario.ShowDialog();
-
+            this.Show();
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             formularioCarrito formulario = new formularioCarrito();
+            this.Hide();
             formulario.ShowDialog();
+            this.Show();
         }
     }
 }
